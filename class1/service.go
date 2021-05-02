@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"github.com/pkg/errors"
 	"net/http"
 )
 
@@ -15,17 +13,17 @@ func serve(addr string, handler http.Handler) error {
 	return s.ListenAndServe()
 }
 
-func serveApp() error {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		fmt.Fprintf(writer, "hello, QCon!")
-	})
-	if err := serve("0.0.0.0:8080", mux); err != nil {
-		return errors.New("服务出问题啦")
-
-	}
-	return nil
-}
+//func serveApp() error {
+//	mux := http.NewServeMux()
+//	mux.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+//		fmt.Fprintf(writer, "hello, QCon!")
+//	})
+//	if err := serve("0.0.0.0:8080", mux); err != nil {
+//		return errors.New("服务出问题啦")
+//
+//	}
+//	return nil
+//}
 
 //func main()  {
 //	done := make(chan error, 1)
