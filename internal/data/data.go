@@ -17,8 +17,6 @@ type Data struct {
 	db *gorm.DB
 }
 
-
-
 // NewData .
 func NewData(c *conf.Data, logger log.Logger) (*Data, func(), error) {
 	//cleanup := func() {
@@ -26,8 +24,7 @@ func NewData(c *conf.Data, logger log.Logger) (*Data, func(), error) {
 	//}
 	//return &Data{}, cleanup, nil
 	log := log.NewHelper("order-service/data", logger)
-
-	db, err := gorm.Open(mysql.Open(conf.Database.Source), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(c.Database.Source), &gorm.Config{})
 	if err != nil {
 		log.Errorf("failed opening connection to mysql: %v", err)
 		return nil, nil, err
